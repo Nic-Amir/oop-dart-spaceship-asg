@@ -41,17 +41,17 @@ class BattleField{
 
     bool whoStart = Random().nextBool();
 
-    if (whoStart){
+    print("Battle of ImpelDown Begin");
+    print("");
 
-      print("Battle of ImpelDown Begin");
-      print("");
+    if (whoStart){
 
       do{
         print("${sp1.name} is attacking ${sp1.firePower} fire power!");
         sp2.hit(sp1.firePower);
         print('${sp2.name} health: ${sp2.health}');
 
-        if(sp1.health<0){
+        if(sp1.health<0){//round n ended
           print("${sp1.name} died, ${sp2.name} won");
         }else if(sp2.health<0){
           print("${sp2.name} died, ${sp1.name} won");
@@ -65,7 +65,7 @@ class BattleField{
           print('${sp1.name} health: ${sp1.health}');
 
 
-          if(sp1.health<0){
+          if(sp1.health<0){//round n+1 ended
             print("${sp1.name} died, ${sp2.name} won");
           }else if(sp2.health<0){
             print("${sp2.name} died, ${sp1.name} won");
@@ -86,7 +86,39 @@ class BattleField{
 
     }else {
 
-      print("try again");
+      do{
+        print("${sp2.name} is attacking ${sp2.firePower} fire power!");
+        sp1.hit(sp2.firePower);
+        print('${sp1.name} health: ${sp1.health}');
+
+        if(sp1.health<0){//round n ended
+          print("${sp1.name} died, ${sp2.name} won");
+        }else if(sp2.health<0){
+          print("${sp2.name} died, ${sp1.name} won");
+        }else {
+          print("the war cont.");
+          print("");}
+
+        if(sp1.health>0){
+          print("${sp1.name} is attacking ${sp1.firePower} fire power!");
+          sp2.hit(sp1.firePower);
+          print('${sp2.name} health: ${sp2.health}');
+
+
+          if(sp1.health<0){//round n+1 ended
+            print("${sp1.name} died, ${sp2.name} won");
+          }else if(sp2.health<0){
+            print("${sp2.name} died, ${sp1.name} won");
+          }else {
+            print("the war cont.");
+            print("");}
+        }else{}
+      }
+
+
+
+
+      while((sp2.health>0) && (sp1.health >0));
     }
 
 
